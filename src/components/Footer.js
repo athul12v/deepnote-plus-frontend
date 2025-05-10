@@ -1,73 +1,70 @@
-import React from 'react';
-import { Box, Typography, Container, Stack, IconButton, Link, Divider } from '@mui/material';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import MemoryIcon from '@mui/icons-material/Memory'; // For AI aesthetic
-import AutoStoriesIcon from '@mui/icons-material/AutoStories'; // Medium-style icon
+import React from "react";
+import { Box, Typography, IconButton, Stack } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 
-function Footer() {
-  return (
-    <Box
-      component="footer"
-      sx={{
-        backgroundColor: '#121212', // Black background
-        color: '#e0e0e0', // Light text for contrast
-        py: 3,
-        px: 2,
-        mt: 'auto',
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        width: '100%',
-      }}
-    >
-      <Container maxWidth="lg">
-        <Stack
-          direction={{ xs: 'column', sm: 'row' }}
-          justifyContent="space-between"
-          alignItems="center"
-          spacing={2}
-          sx={{ textAlign: { xs: 'center', sm: 'left' } }}
+const socialLinks = [
+  {
+    icon: <GitHubIcon fontSize="inherit" />,
+    label: "GitHub",
+    url: "https://github.com/your-github", // <-- Replace with your link
+  },
+  {
+    icon: <MenuBookIcon fontSize="inherit" />,
+    label: "Medium",
+    url: "https://medium.com/@your-medium", // <-- Replace with your link
+  },
+  {
+    icon: <TwitterIcon fontSize="inherit" />,
+    label: "X",
+    url: "https://x.com/your-x", // <-- Replace with your link
+  },
+  {
+    icon: <YouTubeIcon fontSize="inherit" />,
+    label: "YouTube",
+    url: "https://youtube.com/your-youtube", // <-- Replace with your link
+  },
+];
+
+const Footer = () => (
+  <Box
+    component="footer"
+    sx={{
+      width: "100%",
+      bgcolor: "#10131a",
+      color: "#00e5ff",
+      py: 2,
+      px: 2,
+      mt: "auto",
+      borderTop: "1px solid rgba(0,229,255,0.08)",
+      display: "flex",
+      flexDirection: { xs: "column", sm: "row" },
+      alignItems: "center",
+      justifyContent: "space-between",
+      fontSize: "1rem",
+      gap: 1,
+    }}
+  >
+    <Typography variant="body2" sx={{ color: "#00e5ff", fontWeight: 500 }}>
+      © {new Date().getFullYear()} DeepNote Plus
+    </Typography>
+    <Stack direction="row" spacing={1}>
+      {socialLinks.map((item) => (
+        <IconButton
+          key={item.label}
+          aria-label={item.label}
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{ color: "#00e5ff", fontSize: 22 }}
         >
-          <Box>
-            <Typography variant="h6" sx={{ fontWeight: 600, color: '#00e5ff' }}>
-              DeepNote Plus
-            </Typography>
-            <Typography variant="body2" sx={{ mt: 1, color: '#b0bec5' }}>
-            The Intelligent Edge in Learning
-            </Typography>
-          </Box>
+          {item.icon}
+        </IconButton>
+      ))}
+    </Stack>
+  </Box>
+);
 
-          <Stack direction="row" spacing={2}>
-            <Link href="https://github.com" target="_blank" rel="noopener" color="inherit">
-              <IconButton sx={{ color: '#00e5ff' }}>
-                <GitHubIcon />
-              </IconButton>
-            </Link>
-            <Link href="https://x.com" target="_blank" rel="noopener" color="inherit">
-              <IconButton sx={{ color: '#00e5ff' }}>
-                <TwitterIcon />
-              </IconButton>
-            </Link>
-            <Link href="https://medium.com" target="_blank" rel="noopener" color="inherit">
-              <IconButton sx={{ color: '#00e5ff' }}>
-                <AutoStoriesIcon />
-              </IconButton>
-            </Link>
-          </Stack>
-        </Stack>
-
-        <Divider sx={{ backgroundColor: '#37474f', my: 2 }} />
-
-        <Stack direction="row" justifyContent="center" alignItems="center" spacing={1}>
-          <MemoryIcon fontSize="small" sx={{ color: '#00e5ff' }} />
-          <Typography variant="caption" sx={{ color: '#90a4ae' }}>
-            © {new Date().getFullYear()} DeepNote Plus — All rights reserved.
-          </Typography>
-        </Stack>
-      </Container>
-    </Box>
-  );
-}
-
-export default Footer;
+export default Footer; 

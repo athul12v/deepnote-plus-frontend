@@ -1,853 +1,610 @@
-// import React from "react";
-// import { Box, Typography, Button, Grid, Stack } from "@mui/material";
-// import { motion } from "framer-motion";
-// import { styled } from "@mui/system";
-// import { Apple, Android } from "@mui/icons-material";
-// import { User, Code } from "lucide-react";
-
-// // Import Footer Component
-// import Footer from "./Footer";
-
-// // Styled components for a stunning and modern layout
-// const HeroSection = styled(Box)({
-//   background: "linear-gradient(135deg, #020c1b, #2f4f76)",
-//   color: "#fff",
-//   height: "100vh",
-//   display: "flex",
-//   flexDirection: "column",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   textAlign: "center",
-//   padding: "4rem 2rem",
-//   position: "relative",
-//   backgroundSize: "cover",
-//   backgroundPosition: "center",
-//   transition: "background 1s ease",
-// });
-
-// const HeroTitle = styled(Typography)({
-//   fontSize: "4.8rem",
-//   fontWeight: "900",
-//   marginBottom: "1rem",
-//   letterSpacing: "1px",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-//   "@media (max-width:600px)": {
-//     fontSize: "3.5rem",
-//   },
-// });
-
-// const HeroSubTitle = styled(Typography)({
-//   fontSize: "1.6rem",
-//   fontWeight: "400",
-//   maxWidth: "600px",
-//   marginBottom: "2rem",
-//   lineHeight: "1.8",
-//   color: "#bbb",
-//   "@media (max-width:600px)": {
-//     fontSize: "1.3rem",
-//   },
-// });
-
-// const ButtonStyled = styled(Button)({
-//   background: "#00ffcc",
-//   borderRadius: "30px",
-//   padding: "1rem 3rem",
-//   fontSize: "1.4rem",
-//   fontWeight: "600",
-//   color: "#fff",
-//   transition: "all 0.4s ease",
-//   boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.3)",
-//   "&:hover": {
-//     background: "#00cc99",
-//     transform: "scale(1.08)",
-//     boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.4)",
-//   },
-//   "&:active": {
-//     transform: "scale(1)",
-//     background: "#00cc99",
-//   },
-// });
-
-// const AppButtonContainer = styled(Stack)({
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-//   marginTop: "2rem",
-//   gap: "2rem",
-// });
-
-// const AppStoreButton = styled(Button)({
-//   backgroundColor: "#333",
-//   color: "#fff",
-//   padding: "0.8rem 2rem",
-//   fontSize: "1.1rem",
-//   borderRadius: "8px",
-//   display: "flex",
-//   alignItems: "center",
-//   transition: "background 0.3s ease",
-//   "&:hover": {
-//     backgroundColor: "#555",
-//   },
-// });
-
-// const GooglePlayButton = styled(AppStoreButton)({
-//   backgroundColor: "#34b7f1",
-// });
-
-// const FeatureSection = styled(Box)({
-//   padding: "6rem 2rem",
-//   backgroundColor: "#101010",
-//   color: "#fff",
-//   textAlign: "center",
-//   position: "relative",
-//   zIndex: 2,
-//   boxShadow: "0px -10px 60px rgba(0, 0, 0, 0.2)",
-// });
-
-// const FeatureTitle = styled(Typography)({
-//   fontSize: "2.8rem",
-//   fontWeight: "600",
-//   marginBottom: "3rem",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.6)",
-// });
-
-// const FeatureItem = styled(Box)({
-//   backgroundColor: "rgba(255, 255, 255, 0.1)",
-//   padding: "2rem",
-//   margin: "2rem 1rem",
-//   borderRadius: "12px",
-//   textAlign: "center",
-//   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)",
-//   transition: "transform 0.3s ease-in-out",
-//   "&:hover": {
-//     transform: "scale(1.08)",
-//     boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.5)",
-//   },
-// });
-
-// const TeamSection = styled(Box)({
-//   textAlign: "center",
-//   padding: "5rem 2rem",
-//   backgroundColor: "#1a1a2e",
-// });
-
-// const TeamTitle = styled(Typography)({
-//   fontSize: "2.8rem",
-//   fontWeight: "700",
-//   color: "#fff",
-//   marginBottom: "2rem",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-// });
-
-// const TeamMember = styled(Box)({
-//   backgroundColor: "rgba(255, 255, 255, 0.1)",
-//   padding: "2.5rem",
-//   borderRadius: "10px",
-//   textAlign: "center",
-//   margin: "1rem",
-//   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.4)",
-//   transition: "transform 0.3s ease-in-out",
-//   "&:hover": {
-//     transform: "scale(1.1)",
-//   },
-// });
-
-// const MemberTitle = styled(Typography)({
-//   fontSize: "1.7rem",
-//   fontWeight: "600",
-//   color: "#fff",
-//   marginBottom: "1rem",
-// });
-
-// const MemberDescription = styled(Typography)({
-//   fontSize: "1.1rem",
-//   color: "#bbb",
-//   lineHeight: "1.7",
-// });
-
-// function LandingPage() {
-//   return (
-//     <Box sx={{ minHeight: "100vh", bgcolor: "#090909" }}>
-//       {/* Hero Section */}
-//       <HeroSection>
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           transition={{ duration: 1.5, ease: "easeInOut" }}
-//         >
-//           <HeroTitle>DeepNote Plus</HeroTitle>
-//           <HeroSubTitle>
-//             Instantly transcribe and summarize your voice notes with AI. Stay
-//             productive, wherever you are.
-//           </HeroSubTitle>
-//           <ButtonStyled variant="contained" href="/register" disableElevation>
-//             Get Started
-//           </ButtonStyled>
-//           <AppButtonContainer>
-//             <AppStoreButton href="https://apps.apple.com/us/app/deepnote-plus" target="_blank">
-//               <Apple sx={{ marginRight: "0.5rem" }} /> App Store
-//             </AppStoreButton>
-//             <GooglePlayButton href="https://play.google.com/store/apps/details?id=com.deepnoteplus" target="_blank">
-//               <Android sx={{ marginRight: "0.5rem" }} /> Google Play
-//             </GooglePlayButton>
-//           </AppButtonContainer>
-//         </motion.div>
-//       </HeroSection>
-
-//       {/* Feature Section */}
-//       <FeatureSection>
-//         <FeatureTitle>Key Features</FeatureTitle>
-//         <Grid container spacing={3} justifyContent="center">
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <User size={48} color="#3b82f6" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 AI-Powered Summaries
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Get concise summaries of your notes instantly.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <Code size={48} color="#ef4444" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 Seamless Transcription
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Automatically transcribe voice into text with accuracy.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <Apple size={48} color="#34b7f1" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 Cross-Platform Support
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Access your notes on Android, iOS, and web seamlessly.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//         </Grid>
-//       </FeatureSection>
-
-//       {/* Team Section */}
-//       <TeamSection>
-//         <TeamTitle>Meet Our Team</TeamTitle>
-//         <Grid container spacing={3} justifyContent="center">
-//           <Grid item xs={12} sm={6} md={4}>
-//             <TeamMember>
-//               <Code size={48} color="#3b82f6" /> {/* Same icon for both members */}
-//               <MemberTitle>ATHUL V</MemberTitle>
-//               <MemberDescription>
-//                 AI Specialist & Lead Developer
-//               </MemberDescription>
-//             </TeamMember>
-//           </Grid>
-//           <Grid item xs={12} sm={6} md={4}>
-//             <TeamMember>
-//               <Code size={48} color="#3b82f6" /> {/* Same icon for both members */}
-//               <MemberTitle>SWAROOP</MemberTitle>
-//               <MemberDescription>
-//                 AI Specialist & Lead Developer
-//               </MemberDescription>
-//             </TeamMember>
-//           </Grid>
-//         </Grid>
-//       </TeamSection>
-
-//       {/* Footer Section */}
-//       <Footer />
-//     </Box>
-//   );
-// }
-
-// export default LandingPage;
-
-// import React from "react";
-// import { Box, Typography, Button, Grid, Stack } from "@mui/material";
-// import { motion } from "framer-motion";
-// import { styled } from "@mui/system";
-// import { Apple, Android } from "@mui/icons-material";
-// import { User, Code } from "lucide-react";
-
-// // Import Footer Component (assuming you have a Footer.js in the same directory)
-// import Footer from "./Footer";
-
-// // Styled components for a stunning and modern layout
-// const HeroSection = styled(Box)({
-//   background: "linear-gradient(135deg, #020c1b, #2f4f76)",
-//   color: "#fff",
-//   height: "100vh",
-//   display: "grid",
-//   gridTemplateColumns: "1fr 1fr",
-//   alignItems: "center",
-//   padding: "0 4rem",
-//   position: "relative",
-//   "@media (max-width: 960px)": {
-//     gridTemplateColumns: "1fr",
-//     textAlign: "center",
-//     padding: "4rem 2rem",
-//     justifyContent: "center",
-//   },
-// });
-
-// const HeroText = styled(Box)({
-//   padding: "4rem",
-//   textAlign: "left",
-//   "@media (max-width: 960px)": {
-//     textAlign: "center",
-//   },
-// });
-
-// const HeroImage = styled(Box)({
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   padding: "2rem",
-// });
-
-// const HeroTitle = styled(Typography)({
-//   fontSize: "4.8rem",
-//   fontWeight: "900",
-//   marginBottom: "1rem",
-//   letterSpacing: "1px",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-//   "@media (max-width:600px)": {
-//     fontSize: "3.5rem",
-//   },
-// });
-
-// const HeroSubTitle = styled(Typography)({
-//   fontSize: "1.6rem",
-//   fontWeight: "400",
-//   maxWidth: "600px",
-//   marginBottom: "2rem",
-//   lineHeight: "1.8",
-//   color: "#bbb",
-//   "@media (max-width:600px)": {
-//     fontSize: "1.3rem",
-//   },
-// });
-
-// const ButtonStyled = styled(Button)({
-//   background: "#00ffcc",
-//   borderRadius: "30px",
-//   padding: "1rem 3rem",
-//   fontSize: "1.4rem",
-//   fontWeight: "600",
-//   color: "#fff",
-//   transition: "all 0.4s ease",
-//   boxShadow: "0px 6px 15px rgba(0, 0, 0, 0.3)",
-//   "&:hover": {
-//     background: "#00cc99",
-//     transform: "scale(1.08)",
-//     boxShadow: "0px 10px 25px rgba(0, 0, 0, 0.4)",
-//   },
-//   "&:active": {
-//     transform: "scale(1)",
-//     background: "#00cc99",
-//   },
-// });
-
-// const AppButtonContainer = styled(Stack)({
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-//   marginTop: "2rem",
-//   gap: "2rem",
-// });
-
-// const AppStoreButton = styled(Button)({
-//   backgroundColor: "#333",
-//   color: "#fff",
-//   padding: "0.8rem 2rem",
-//   fontSize: "1.1rem",
-//   borderRadius: "8px",
-//   display: "flex",
-//   alignItems: "center",
-//   transition: "background 0.3s ease",
-//   "&:hover": {
-//     backgroundColor: "#555",
-//   },
-// });
-
-// const GooglePlayButton = styled(AppStoreButton)({
-//   backgroundColor: "#34b7f1",
-// });
-
-// const FeatureSection = styled(Box)({
-//   padding: "6rem 2rem",
-//   backgroundColor: "#101010",
-//   color: "#fff",
-//   textAlign: "center",
-//   position: "relative",
-//   zIndex: 2,
-//   boxShadow: "0px -10px 60px rgba(0, 0, 0, 0.2)",
-// });
-
-// const FeatureTitle = styled(Typography)({
-//   fontSize: "2.8rem",
-//   fontWeight: "600",
-//   marginBottom: "3rem",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.6)",
-// });
-
-// const FeatureItem = styled(Box)({
-//   backgroundColor: "rgba(255, 255, 255, 0.1)",
-//   padding: "2rem",
-//   margin: "2rem 1rem",
-//   borderRadius: "12px",
-//   textAlign: "center",
-//   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.3)",
-//   transition: "transform 0.3s ease-in-out",
-//   "&:hover": {
-//     transform: "scale(1.08)",
-//     boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.5)",
-//   },
-// });
-
-// const TeamSection = styled(Box)({
-//   textAlign: "center",
-//   padding: "5rem 2rem",
-//   backgroundColor: "#1a1a2e",
-// });
-
-// const TeamTitle = styled(Typography)({
-//   fontSize: "2.8rem",
-//   fontWeight: "700",
-//   color: "#fff",
-//   marginBottom: "2rem",
-//   textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)",
-// });
-
-// const TeamMember = styled(Box)({
-//   backgroundColor: "rgba(255, 255, 255, 0.1)",
-//   padding: "2.5rem",
-//   borderRadius: "10px",
-//   textAlign: "center",
-//   margin: "1rem",
-//   boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.4)",
-//   transition: "transform 0.3s ease-in-out",
-//   "&:hover": {
-//     transform: "scale(1.1)",
-//   },
-// });
-
-// const MemberTitle = styled(Typography)({
-//   fontSize: "1.7rem",
-//   fontWeight: "600",
-//   color: "#fff",
-//   marginBottom: "1rem",
-// });
-
-// const MemberDescription = styled(Typography)({
-//   fontSize: "1.1rem",
-//   color: "#bbb",
-//   lineHeight: "1.7",
-// });
-
-// function LandingPage() {
-//   return (
-//     <Box sx={{ minHeight: "100vh", bgcolor: "#090909" }}>
-//       {/* Hero Section */}
-//       <HeroSection>
-//         <HeroText>
-//           <motion.div
-//             initial={{ opacity: 0, x: -50 }}
-//             animate={{ opacity: 1, x: 0 }}
-//             transition={{ duration: 1, ease: "easeInOut" }}
-//           >
-//             <HeroTitle>DeepNote Plus</HeroTitle>
-//             <HeroSubTitle>
-//               Instantly transcribe and summarize your voice notes with AI. Stay
-//               productive, wherever you are.
-//             </HeroSubTitle>
-//             <ButtonStyled variant="contained" href="/register" disableElevation>
-//               Get Started
-//             </ButtonStyled>
-//             <AppButtonContainer sx={{ flexDirection: "row", justifyContent: "flex-start", mt: 3 }}>
-//               <AppStoreButton href="https://apps.apple.com/us/app/deepnote-plus" target="_blank">
-//                 <Apple sx={{ marginRight: "0.5rem" }} /> App Store
-//               </AppStoreButton>
-//               <GooglePlayButton sx={{ ml: 2 }} href="https://play.google.com/store/apps/details?id=com.deepnoteplus" target="_blank">
-//                 <Android sx={{ marginRight: "0.5rem" }} /> Google Play
-//               </GooglePlayButton>
-//             </AppButtonContainer>
-//           </motion.div>
-//         </HeroText>
-//         <HeroImage>
-//           <motion.img
-//             src="/path/to/your/hero-image.png" // Replace with your image path
-//             alt="DeepNote Plus on Devices"
-//             style={{ maxWidth: "80%", height: "auto", borderRadius: "10px", boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.4)" }}
-//             initial={{ opacity: 0, scale: 0.8 }}
-//             animate={{ opacity: 1, scale: 1 }}
-//             transition={{ duration: 1.2, ease: "easeInOut" }}
-//           />
-//         </HeroImage>
-//       </HeroSection>
-
-//       {/* Feature Section */}
-//       <FeatureSection>
-//         <FeatureTitle>Key Features</FeatureTitle>
-//         <Grid container spacing={3} justifyContent="center">
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <User size={48} color="#3b82f6" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 AI-Powered Summaries
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Get concise summaries of your notes instantly.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <Code size={48} color="#ef4444" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 Seamless Transcription
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Automatically transcribe voice into text with accuracy.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//           <Grid item xs={12} sm={4}>
-//             <FeatureItem>
-//               <Apple size={48} color="#34b7f1" />
-//               <Typography variant="h6" color="common.white" mt={2}>
-//                 Cross-Platform Support
-//               </Typography>
-//               <Typography variant="body1" color="common.white" mt={1}>
-//                 Access your notes on Android, iOS, and web seamlessly.
-//               </Typography>
-//             </FeatureItem>
-//           </Grid>
-//         </Grid>
-//       </FeatureSection>
-
-//       {/* Team Section */}
-//       <TeamSection>
-//         <TeamTitle>Meet Our Team</TeamTitle>
-//         <Grid container spacing={3} justifyContent="center">
-//           <Grid item xs={12} sm={6} md={4}>
-//             <TeamMember>
-//               <Code size={48} color="#3b82f6" /> {/* Same icon for both members */}
-//               <MemberTitle>ATHUL V</MemberTitle>
-//               <MemberDescription>
-//                 AI Specialist & Lead Developer
-//               </MemberDescription>
-//             </TeamMember>
-//           </Grid>
-//           <Grid item xs={12} sm={6} md={4}>
-//             <TeamMember>
-//               <Code size={48} color="#3b82f6" /> {/* Same icon for both members */}
-//               <MemberTitle>SWAROOP</MemberTitle>
-//               <MemberDescription>
-//                 AI Specialist & Lead Developer
-//               </MemberDescription>
-//             </TeamMember>
-//           </Grid>
-//         </Grid>
-//       </TeamSection>
-
-//       {/* Footer Section */}
-//       <Footer />
-//     </Box>
-//   );
-// }
-
-// export default LandingPage;
-
-
-
-
 import React from "react";
-import { Box, Typography, Button, Grid, Stack } from "@mui/material";
+import { Box, Typography, Button, Grid, Stack, useTheme, Container } from "@mui/material";
 import { motion } from "framer-motion";
 import { styled } from "@mui/system";
-import { Apple, Android } from "@mui/icons-material";
-import { User, Code } from "lucide-react";
-import Footer from "./Footer";
+import { Apple, Android, ArrowRightAlt, PlayArrow, Download } from "@mui/icons-material";
+import { Mic, Summarize, SyncAlt, Devices, Code, Quiz, Psychology, AutoStories, Speed } from "@mui/icons-material";
+import TranscriptSummaryQuiz from "./TranscriptSummaryQuiz";
 
-// Use a minimal, modern font like Inter for the whole page
-const HeroSection = styled(Box)({
-  background: "linear-gradient(135deg, #020c1b, #2f4f76)",
+// Styled components
+const MainContainer = styled(Box)({
+  display: "flex",
+  flexDirection: "column",
+  minHeight: "100vh",
+  backgroundColor: "#0a0a0a",
+});
+
+const HeroSection = styled(Box)(({ theme }) => ({
+  background: "linear-gradient(135deg, #020c1b 0%, #1a2a4a 100%)",
   color: "#fff",
-  height: "100vh",
+  minHeight: "100vh",
+  display: "flex",
+  alignItems: "center",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "radial-gradient(circle at 70% 30%, rgba(0,255,204,0.1) 0%, transparent 60%)",
+  },
+}));
+
+const HeroContent = styled(Box)(({ theme }) => ({
+  maxWidth: "1400px",
+  margin: "0 auto",
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   alignItems: "center",
-  padding: "0 2rem",
-  position: "relative",
-  "@media (max-width: 960px)": {
+  gap: theme.spacing(6),
+  padding: theme.spacing(4),
+  [theme.breakpoints.down("md")]: {
     gridTemplateColumns: "1fr",
     textAlign: "center",
-    padding: "4rem 2rem",
-    justifyContent: "center",
   },
-});
+}));
 
-const HeroText = styled(Box)({
-  padding: "2rem",
-  textAlign: "left",
-  "@media (max-width: 960px)": {
-    textAlign: "center",
+const HeroText = styled(Box)(({ theme }) => ({
+  zIndex: 2,
+  [theme.breakpoints.down("md")]: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
-});
+}));
 
-const HeroImage = styled(Box)({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "2rem",
-});
-
-const HeroTitle = styled(Typography)({
-  fontSize: "4.8rem",
-  fontWeight: "700",
-  marginBottom: "1rem",
-  letterSpacing: "0.5px",
-  textTransform: "uppercase",
-  fontFamily: "'Inter', sans-serif",
-  textShadow: "0px 4px 10px rgba(0, 0, 0, 0.5)", // subtle shadow for depth
-  "@media (max-width: 600px)": {
-    fontSize: "3.5rem",
+const HeroTitle = styled(Typography)(({ theme }) => ({
+  fontSize: "4.5rem",
+  fontWeight: 800,
+  marginBottom: theme.spacing(2),
+  lineHeight: 1.2,
+  background: "linear-gradient(90deg, #00ffcc, #00ccff)",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "3rem",
   },
-});
+}));
 
-const HeroSubTitle = styled(Typography)({
-  fontSize: "1.6rem",
-  fontWeight: "400",
+const HeroSubtitle = styled(Typography)(({ theme }) => ({
+  fontSize: "1.5rem",
+  fontWeight: 400,
+  marginBottom: theme.spacing(4),
+  color: "rgba(255,255,255,0.8)",
+  lineHeight: 1.6,
   maxWidth: "600px",
-  marginBottom: "2rem",
-  lineHeight: "1.8",
-  color: "#bbb",
-  fontFamily: "'Inter', sans-serif",
-  "@media (max-width: 600px)": {
-    fontSize: "1.3rem",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "1.2rem",
   },
-});
+}));
 
-const ButtonStyled = styled(Button)({
-  background: "#00ffcc",
-  borderRadius: "30px",
-  padding: "1rem 3rem",
-  fontSize: "1.4rem",
-  fontWeight: "600",
-  color: "#fff",
-  transition: "all 0.4s ease",
-  boxShadow: "none",
+const CTAButton = styled(Button)(({ theme }) => ({
+  background: "linear-gradient(90deg, #00ffcc, #00ccff)",
+  color: "#000",
+  borderRadius: "50px",
+  padding: theme.spacing(2, 4),
+  fontSize: "1.1rem",
+  fontWeight: 700,
+  textTransform: "none",
+  boxShadow: "0 4px 20px rgba(0, 255, 204, 0.3)",
+  transition: "all 0.3s ease",
   "&:hover": {
-    background: "#00cc99",
-    transform: "scale(1.08)",
+    transform: "translateY(-3px)",
+    boxShadow: "0 6px 25px rgba(0, 255, 204, 0.4)",
   },
-});
+}));
 
-const AppButtonContainer = styled(Stack)({
+const AppButton = styled(Button)(({ theme }) => ({
+  backgroundColor: "rgba(255,255,255,0.1)",
+  color: "#fff",
+  borderRadius: "12px",
+  padding: theme.spacing(1.5, 3),
+  fontSize: "1rem",
+  fontWeight: 500,
+  textTransform: "none",
+  border: "1px solid rgba(255,255,255,0.2)",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    backgroundColor: "rgba(255,255,255,0.2)",
+  },
+}));
+
+const FeatureSection = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(10, 2),
+  background: "#0f0f0f",
+  position: "relative",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "radial-gradient(circle at 30% 70%, rgba(0,255,204,0.05) 0%, transparent 70%)",
+  },
+}));
+
+const SectionTitle = styled(Typography)(({ theme }) => ({
+  fontSize: "3rem",
+  fontWeight: 700,
+  marginBottom: theme.spacing(6),
+  textAlign: "center",
+  background: "linear-gradient(90deg, #fff, #aaa)",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "2.5rem",
+  },
+}));
+
+const FeatureCard = styled(Box)(({ theme }) => ({
+  background: "linear-gradient(145deg, #151515, #1a1a1a)",
+  borderRadius: "16px",
+  padding: theme.spacing(4),
+  height: "100%",
+  boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+  transition: "all 0.4s ease",
+  border: "1px solid rgba(255,255,255,0.05)",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "linear-gradient(45deg, rgba(0,255,204,0.05), transparent)",
+    opacity: 0,
+    transition: "opacity 0.4s ease",
+  },
+  "&:hover": {
+    transform: "translateY(-10px)",
+    boxShadow: "0 12px 40px rgba(0, 0, 0, 0.4)",
+    "&::before": {
+      opacity: 1,
+    },
+  },
+}));
+
+const FeatureIcon = styled(Box)(({ theme }) => ({
+  width: "80px",
+  height: "80px",
+  borderRadius: "50%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  marginTop: "2rem",
-  gap: "1.5rem",
-});
+  marginBottom: theme.spacing(3),
+  background: "linear-gradient(135deg, rgba(0,255,204,0.1), rgba(0,204,255,0.1))",
+  color: "#00ffcc",
+  fontSize: "2.5rem",
+  transition: "all 0.3s ease",
+  "&:hover": {
+    transform: "scale(1.1)",
+    background: "linear-gradient(135deg, rgba(0,255,204,0.2), rgba(0,204,255,0.2))",
+  },
+}));
 
-const AppStoreButton = styled(Button)({
-  backgroundColor: "#333",
-  color: "#fff",
-  padding: "0.8rem 2rem",
-  fontSize: "1.1rem",
-  borderRadius: "8px",
+const DemoSection = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(10, 2),
+  background: "linear-gradient(180deg, #0f0f0f 0%, #1a1a2e 100%)",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "radial-gradient(circle at 70% 30%, rgba(0,255,204,0.05) 0%, transparent 70%)",
+  },
+}));
+
+const DemoCard = styled(Box)(({ theme }) => ({
+  background: "rgba(255,255,255,0.03)",
+  borderRadius: "20px",
+  padding: theme.spacing(4),
+  backdropFilter: "blur(10px)",
+  border: "1px solid rgba(255,255,255,0.05)",
+  transition: "all 0.3s ease",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "linear-gradient(45deg, rgba(0,255,204,0.05), transparent)",
+    opacity: 0,
+    transition: "opacity 0.3s ease",
+  },
+  "&:hover": {
+    transform: "translateY(-5px)",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+    borderColor: "rgba(0,255,204,0.3)",
+    "&::before": {
+      opacity: 1,
+    },
+  },
+}));
+
+const DemoStep = styled(Box)(({ theme }) => ({
+  display: "flex",
+  alignItems: "flex-start",
+  marginBottom: theme.spacing(4),
+  "&:last-child": {
+    marginBottom: 0,
+  },
+}));
+
+const StepNumber = styled(Box)(({ theme }) => ({
+  width: "40px",
+  height: "40px",
+  borderRadius: "50%",
+  background: "linear-gradient(135deg, #00ffcc, #00ccff)",
   display: "flex",
   alignItems: "center",
-  transition: "background 0.3s ease",
-  "&:hover": {
-    backgroundColor: "#555",
+  justifyContent: "center",
+  color: "#000",
+  fontWeight: 700,
+  marginRight: theme.spacing(2),
+  flexShrink: 0,
+}));
+
+const StepContent = styled(Box)(({ theme }) => ({
+  flex: 1,
+}));
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1 } }
+};
+
+const slideUp = {
+  hidden: { y: 50, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.8 } }
+};
+
+const stagger = {
+  visible: {
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const StatsSection = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(8, 2),
+  background: "linear-gradient(90deg, #020c1b 0%, #1a2a4a 100%)",
+  position: "relative",
+  overflow: "hidden",
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: "radial-gradient(circle at 30% 70%, rgba(0,255,204,0.05) 0%, transparent 70%)",
   },
-});
+}));
 
-const GooglePlayButton = styled(AppStoreButton)({
-  backgroundColor: "#34b7f1",
-});
-
-const FeatureSection = styled(Box)({
-  padding: "4rem 2rem",
-  backgroundColor: "#101010",
-  color: "#fff",
+const StatCard = styled(Box)(({ theme }) => ({
   textAlign: "center",
-});
-
-const FeatureTitle = styled(Typography)({
-  fontSize: "2.8rem",
-  fontWeight: "600",
-  marginBottom: "3rem",
-  fontFamily: "'Inter', sans-serif",
-});
-
-const FeatureItem = styled(Box)({
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  padding: "2rem",
-  margin: "1rem",
-  borderRadius: "12px",
-  textAlign: "center",
-  boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.1)",
-  transition: "transform 0.3s ease-in-out",
+  padding: theme.spacing(4),
+  background: "rgba(255,255,255,0.03)",
+  borderRadius: "16px",
+  backdropFilter: "blur(10px)",
+  border: "1px solid rgba(255,255,255,0.05)",
+  transition: "all 0.3s ease",
   "&:hover": {
-    transform: "scale(1.05)",
-    boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.2)",
+    transform: "translateY(-5px)",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
+    borderColor: "rgba(0,255,204,0.3)",
   },
-});
-
-const TeamSection = styled(Box)({
-  textAlign: "center",
-  padding: "4rem 2rem",
-  backgroundColor: "#1a1a2e",
-});
-
-const TeamTitle = styled(Typography)({
-  fontSize: "2.8rem",
-  fontWeight: "700",
-  color: "#fff",
-  marginBottom: "2rem",
-  fontFamily: "'Inter', sans-serif",
-});
-
-const TeamMember = styled(Box)({
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
-  padding: "2.5rem",
-  borderRadius: "10px",
-  textAlign: "center",
-  margin: "1rem",
-  boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-  transition: "transform 0.3s ease-in-out",
-  "&:hover": {
-    transform: "scale(1.05)",
-  },
-});
-
-const MemberTitle = styled(Typography)({
-  fontSize: "1.7rem",
-  fontWeight: "600",
-  color: "#fff",
-  marginBottom: "1rem",
-});
-
-const MemberDescription = styled(Typography)({
-  fontSize: "1.1rem",
-  color: "#bbb",
-  lineHeight: "1.7",
-});
+}));
 
 function LandingPage() {
+  const theme = useTheme();
+
+  const features = [
+    {
+      icon: <Mic fontSize="large" />,
+      title: "Smart Lecture Recording",
+      description: "Record your lectures with crystal-clear audio quality and automatic noise reduction. Never miss a word from your professors."
+    },
+    {
+      icon: <Summarize fontSize="large" />,
+      title: "AI-Powered Summaries",
+      description: "Get concise summaries of your lectures with key points and important concepts highlighted. Perfect for quick revision."
+    },
+    {
+      icon: <Quiz fontSize="large" />,
+      title: "Auto Quiz Generation",
+      description: "Generate practice quizzes from your lecture content to test your understanding. Great for exam preparation."
+    },
+    {
+      icon: <Psychology fontSize="large" />,
+      title: "Smart Learning",
+      description: "AI-powered insights help you understand complex topics and identify knowledge gaps in your studies."
+    },
+    {
+      icon: <AutoStories fontSize="large" />,
+      title: "Study Notes",
+      description: "Automatically organize your lecture content into well-structured study notes with key concepts and examples."
+    },
+    {
+      icon: <Speed fontSize="large" />,
+      title: "Quick Review",
+      description: "Access summarized content and key points for quick revision before exams or assignments."
+    }
+  ];
+
+  const demoSteps = [
+    {
+      number: 1,
+      title: "Record Your Lecture",
+      description: "Start recording with one tap. Our AI automatically filters background noise for crystal-clear audio."
+    },
+    {
+      number: 2,
+      title: "Get Instant Transcription",
+      description: "Watch as your lecture is transcribed in real-time with high accuracy."
+    },
+    {
+      number: 3,
+      title: "Review AI Summary",
+      description: "Get a concise summary with key points and important concepts highlighted."
+    },
+    {
+      number: 4,
+      title: "Practice with Quizzes",
+      description: "Test your understanding with AI-generated quizzes based on the lecture content."
+    }
+  ];
+
+  const stats = [
+    { number: "98%", label: "Accuracy Rate" },
+    { number: "50K+", label: "Active Students" },
+    { number: "1M+", label: "Minutes Transcribed" },
+    { number: "24/7", label: "AI Support" }
+  ];
+
+  // // Example backend response (from your message)
+  // const response = {
+  //   summary: "Here's a summary of the text: ...",
+  //   quiz: `{
+  //     "questions": [
+  //       {
+  //         "question": "What year was C programming language created?",
+  //         "options": ["1962", "1972", "1982", "1992"],
+  //         "answer": "1972"
+  //       },
+  //       // ... more questions ...
+  //     ]
+  //   }`
+  // };
+
+  // const transcriptText = "Full transcript text here..."; // The actual transcript
+
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#090909" }}>
+    <MainContainer>
       {/* Hero Section */}
       <HeroSection>
-        <HeroText>
+        <HeroContent>
+          <HeroText>
+            <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+              <HeroTitle variant="h1">
+                Your AI Study Assistant
+              </HeroTitle>
+              <HeroSubtitle variant="h2">
+                Record lectures, get instant transcriptions, AI-powered summaries, and auto-generated quizzes. Make learning smarter and more efficient.
+              </HeroSubtitle>
+              <Stack direction="row" spacing={3} sx={{ mt: 4 }}>
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <CTAButton
+                    variant="contained"
+                    endIcon={<ArrowRightAlt />}
+                    href="/register"
+                  >
+                    Start Learning Free
+                  </CTAButton>
+                </motion.div>
+                <motion.div whileHover={{ scale: 1.05 }}>
+                  <CTAButton
+                    variant="outlined"
+                    startIcon={<PlayArrow />}
+                    sx={{
+                      background: "transparent",
+                      border: "2px solid #00ffcc",
+                      color: "#00ffcc",
+                      "&:hover": {
+                        background: "rgba(0, 255, 204, 0.1)",
+                      }
+                    }}
+                  >
+                    Watch Demo
+                  </CTAButton>
+                </motion.div>
+              </Stack>
+            </motion.div>
+          </HeroText>
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-          >
-            <HeroTitle>DeepNote Plus</HeroTitle>
-            <HeroSubTitle>
-              Instantly transcribe and summarize your voice notes with AI. Stay
-              productive, wherever you are.
-            </HeroSubTitle>
-            <ButtonStyled variant="contained" href="/register" disableElevation>
-              Get Started
-            </ButtonStyled>
-            <AppButtonContainer sx={{ flexDirection: "row", justifyContent: "flex-start", mt: 3 }}>
-              <AppStoreButton href="https://apps.apple.com/us/app/deepnote-plus" target="_blank">
-                <Apple sx={{ marginRight: "0.5rem" }} /> App Store
-              </AppStoreButton>
-              <GooglePlayButton sx={{ ml: 2 }} href="https://play.google.com/store/apps/details?id=com.deepnoteplus" target="_blank">
-                <Android sx={{ marginRight: "0.5rem" }} /> Google Play
-              </GooglePlayButton>
-            </AppButtonContainer>
-          </motion.div>
-        </HeroText>
-        <HeroImage>
-          <motion.img
-            src="/path/to/your/hero-image.png" // Replace with your image path
-            alt="DeepNote Plus on Devices"
-            style={{ maxWidth: "80%", height: "auto", borderRadius: "10px", boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.2)" }}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeInOut" }}
-          />
-        </HeroImage>
+            transition={{ duration: 1 }}
+            style={{ zIndex: 1 }}
+          >
+            <Box
+              component="img"
+              src="/path-to-your-app-preview.png"
+              alt="DeepNote Plus App Preview"
+              sx={{
+                width: "100%",
+                borderRadius: "20px",
+                boxShadow: "0 25px 50px -12px rgba(0, 255, 204, 0.3)",
+                border: "1px solid rgba(0, 255, 204, 0.2)"
+              }}
+            />
+          </motion.div>
+        </HeroContent>
       </HeroSection>
 
-      {/* Feature Section */}
+      {/* Features Section */}
       <FeatureSection>
-        <FeatureTitle>Key Features</FeatureTitle>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} sm={4}>
-            <FeatureItem>
-              <User size={48} color="#3b82f6" />
-              <Typography variant="h6" color="common.white" mt={2}>
-                AI-Powered Summaries
-              </Typography>
-              <Typography variant="body1" color="common.white" mt={1}>
-                Get concise summaries of your notes instantly.
-              </Typography>
-            </FeatureItem>
+        <Container maxWidth="lg">
+          <motion.div initial="hidden" animate="visible" variants={fadeIn}>
+            <SectionTitle variant="h2">Smart Learning Features</SectionTitle>
+          </motion.div>
+          <Grid container spacing={4}>
+            {features.map((feature, index) => (
+              <Grid item xs={12} sm={6} md={4} key={index}>
+                <motion.div
+                  variants={slideUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  whileHover={{ y: -10 }}
+                >
+                  <FeatureCard>
+                    <FeatureIcon>
+                      {feature.icon}
+                    </FeatureIcon>
+                    <Typography variant="h5" gutterBottom sx={{ color: "#fff", fontWeight: 600 }}>
+                      {feature.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.7)" }}>
+                      {feature.description}
+                    </Typography>
+                  </FeatureCard>
+                </motion.div>
+              </Grid>
+            ))}
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <FeatureItem>
-              <Code size={48} color="#ef4444" />
-              <Typography variant="h6" color="common.white" mt={2}>
-                Seamless Transcription
-              </Typography>
-              <Typography variant="body1" color="common.white" mt={1}>
-                Automatically transcribe voice into text with accuracy.
-              </Typography>
-            </FeatureItem>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <FeatureItem>
-              <Apple size={48} color="#34b7f1" />
-              <Typography variant="h6" color="common.white" mt={2}>
-                Cross-Platform Support
-              </Typography>
-              <Typography variant="body1" color="common.white" mt={1}>
-                Access your notes on Android, iOS, and web seamlessly.
-              </Typography>
-            </FeatureItem>
-          </Grid>
-        </Grid>
+        </Container>
       </FeatureSection>
 
-      {/* Team Section */}
-      <TeamSection>
-        <TeamTitle>Meet Our Team</TeamTitle>
-        <Grid container spacing={3} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4}>
-            <TeamMember>
-              <Code size={48} color="#3b82f6" />
-              <MemberTitle>ATHUL V</MemberTitle>
-              <MemberDescription>AI Specialist & Lead Developer</MemberDescription>
-            </TeamMember>
+      {/* Demo Section */}
+      <DemoSection>
+        <Container maxWidth="lg">
+          <Grid container spacing={6} alignItems="center">
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <Typography variant="h3" sx={{ color: "#fff", mb: 4, fontWeight: 700 }}>
+                  See How It Works
+                </Typography>
+                <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.7)", mb: 4 }}>
+                  Experience how our AI transforms your lecture recordings into comprehensive study materials in seconds.
+                </Typography>
+                {demoSteps.map((step, index) => (
+                  <DemoStep key={index}>
+                    <StepNumber>{step.number}</StepNumber>
+                    <StepContent>
+                      <Typography variant="h6" sx={{ color: "#fff", mb: 1 }}>
+                        {step.title}
+                      </Typography>
+                      <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.7)" }}>
+                        {step.description}
+                      </Typography>
+                    </StepContent>
+                  </DemoStep>
+                ))}
+                <Stack direction="row" spacing={2} sx={{ mt: 4 }}>
+                  <CTAButton
+                    variant="contained"
+                    startIcon={<PlayArrow />}
+                    href="#demo"
+                  >
+                    Watch Demo
+                  </CTAButton>
+                  <CTAButton
+                    variant="outlined"
+                    startIcon={<Download />}
+                    sx={{
+                      background: "transparent",
+                      border: "2px solid #00ffcc",
+                      color: "#00ffcc",
+                      "&:hover": {
+                        background: "rgba(0, 255, 204, 0.1)",
+                      }
+                    }}
+                  >
+                    Download App
+                  </CTAButton>
+                </Stack>
+              </motion.div>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <DemoCard>
+                  <Box
+                    component="img"
+                    src="/path-to-your-demo-preview.png"
+                    alt="DeepNote Plus Demo"
+                    sx={{
+                      width: "100%",
+                      borderRadius: "12px",
+                      boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                    }}
+                  />
+                </DemoCard>
+              </motion.div>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <TeamMember>
-              <Code size={48} color="#3b82f6" />
-              <MemberTitle>SWAROOP</MemberTitle>
-              <MemberDescription>AI Specialist & Lead Developer</MemberDescription>
-            </TeamMember>
-          </Grid>
-        </Grid>
-      </TeamSection>
+        </Container>
+      </DemoSection>
 
-      {/* Footer Section */}
-      <Footer />
-    </Box>
+      {/* Stats Section */}
+      <StatsSection>
+        <Container maxWidth="lg">
+          <Grid container spacing={4}>
+            {stats.map((stat, index) => (
+              <Grid item xs={6} md={3} key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <StatCard>
+                    <Typography variant="h3" sx={{ color: "#00ffcc", fontWeight: 700, mb: 1 }}>
+                      {stat.number}
+                    </Typography>
+                    <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.7)" }}>
+                      {stat.label}
+                    </Typography>
+                  </StatCard>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </StatsSection>
+
+      {/* Transcript Summary Quiz */}
+      <TranscriptSummaryQuiz
+        backendResponse={response}
+        transcriptText={transcriptText}
+      />
+    </MainContainer>
   );
 }
 

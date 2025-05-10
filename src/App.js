@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import Register from "./components/Register";
 import NavigationBar from "./components/NavigationBar";
 import SettingsPage from './components/SettingsPage';
+import Footer from './components/Footer';
 
 function App() {
   const [user, setUser] = useState(null); // Local state to track authenticated user
@@ -46,6 +47,7 @@ function App() {
         {/* Catch-all route, redirect to login if the user is not authenticated */}
         <Route path="*" element={<Navigate to={user ? "/home" : "/login"} />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
